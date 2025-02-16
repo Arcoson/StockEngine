@@ -631,6 +631,8 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "components" },
+    { name = "numpy" },
+    { name = "pandas" },
     { name = "plotly" },
     { name = "streamlit" },
     { name = "ta" },
@@ -640,6 +642,8 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "components", specifier = ">=0.0.1a0" },
+    { name = "numpy", specifier = ">=2.2.3" },
+    { name = "pandas", specifier = ">=2.2.3" },
     { name = "plotly", specifier = ">=6.0.0" },
     { name = "streamlit", specifier = ">=1.42.0" },
     { name = "ta", specifier = ">=0.11.0" },
