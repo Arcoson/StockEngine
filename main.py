@@ -14,7 +14,8 @@ st.set_page_config(
 with open('styles/custom.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# App title and description
+# Display logo and title
+st.image('attached_assets/A-2.png', width=80)
 st.title('📈 Advanced Stock Analysis Dashboard')
 st.markdown("""
     Analyze and compare stocks with interactive charts and technical indicators. 

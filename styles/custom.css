@@ -7,6 +7,12 @@
     padding: 2rem;
 }
 
+/* Logo styling */
+.logo-img {
+    max-width: 80px;
+    margin-bottom: 1rem;
+}
+
 /* Metric styling */
 [data-testid="stMetricValue"] {
     font-size: 24px;
