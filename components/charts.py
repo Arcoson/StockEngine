@@ -1,6 +1,7 @@
 import plotly.graph_objects as go
 import streamlit as st
 from plotly.subplots import make_subplots
+import pandas as pd
 
 def plot_stock_price(data, symbol):
     """Create an interactive stock price chart using Plotly"""
@@ -40,6 +41,57 @@ def plot_stock_price(data, symbol):
         height=800,
         template='plotly_dark',
         showlegend=False
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+def plot_price_comparison(normalized_prices: dict, symbols: list):
+    """Create a comparison chart of normalized prices"""
+    fig = go.Figure()
+
+    for symbol, prices in normalized_prices.items():
+        fig.add_trace(
+            go.Scatter(
+                x=prices.index,
+                y=prices,
+                name=symbol,
+                mode='lines',
+                hovertemplate='%{y:.2f}%<extra></extra>'
+            )
+        )
+
+    fig.update_layout(
+        title='Relative Price Performance (%)',
+        yaxis_title='Price Change (%)',
+        height=600,
+        template='plotly_dark',
+        hovermode='x unified',
+        showlegend=True
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+def plot_volume_comparison(stocks_data: dict, symbols: list):
+    """Create a comparison chart of trading volumes"""
+    fig = go.Figure()
+
+    for symbol, data in stocks_data.items():
+        fig.add_trace(
+            go.Bar(
+                x=data.index,
+                y=data['Volume'],
+                name=symbol,
+                visible='legendonly' if symbol != symbols[0] else True
+            )
+        )
+
+    fig.update_layout(
+        title='Volume Comparison',
+        yaxis_title='Volume',
+        height=400,
+        template='plotly_dark',
+        barmode='group',
+        showlegend=True
     )
 
     st.plotly_chart(fig, use_container_width=True)

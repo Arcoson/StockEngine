@@ -70,3 +70,29 @@ def display_momentum_indicators(data: pd.DataFrame):
 
     except Exception as e:
         st.error(f"Error calculating momentum indicators: {str(e)}")
+
+def compare_key_metrics(stocks_data: Dict[str, pd.DataFrame]) -> pd.DataFrame:
+    """Compare key metrics across multiple stocks"""
+    try:
+        metrics = []
+
+        for symbol, data in stocks_data.items():
+            returns = data['Close'].pct_change().dropna()
+            current_price = data['Close'].iloc[-1]
+            price_change = ((current_price / data['Close'].iloc[0]) - 1) * 100
+            volatility = returns.std() * np.sqrt(252)
+            avg_daily_volume = data['Volume'].mean()
+
+            metrics.append({
+                'Symbol': symbol,
+                'Current Price': f"${current_price:.2f}",
+                'Price Change (%)': f"{price_change:.2f}%",
+                'Volatility (Annual)': f"{volatility*100:.2f}%",
+                'Avg Daily Volume': f"{avg_daily_volume:,.0f}"
+            })
+
+        return pd.DataFrame(metrics).set_index('Symbol')
+
+    except Exception as e:
+        st.error(f"Error comparing metrics: {str(e)}")
+        return pd.DataFrame()
