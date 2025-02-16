@@ -5,7 +5,7 @@ from components import stock_data, technical_analysis, charts
 from utils import calculations
 
 st.set_page_config(
-    page_title="Stock Analysis Dashboard",
+    page_title="StockEngine",
     page_icon="📈",
     layout="wide"
 )

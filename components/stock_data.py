@@ -3,7 +3,6 @@ import pandas as pd
 from typing import Dict, Optional
 
 def get_stock_data(symbol: str, period: str, interval: str) -> pd.DataFrame:
-    """Fetch stock data using yfinance with error handling"""
     try:
         stock = yf.Ticker(symbol)
         df = stock.history(period=period, interval=interval)
@@ -14,7 +13,6 @@ def get_stock_data(symbol: str, period: str, interval: str) -> pd.DataFrame:
         raise ValueError(f"Error fetching data for {symbol}: {str(e)}")
 
 def get_company_info(symbol: str) -> Dict[str, str]:
-    """Get company information with error handling"""
     try:
         stock = yf.Ticker(symbol)
         info = stock.info

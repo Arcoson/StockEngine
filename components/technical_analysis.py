@@ -5,9 +5,6 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 def display_technical_analysis(data: pd.DataFrame):
-    """Display technical analysis indicators"""
-    # Calculate indicators
-    # Trend indicators
     data['SMA20'] = ta.trend.sma_indicator(data['Close'], window=20)
     data['SMA50'] = ta.trend.sma_indicator(data['Close'], window=50)
 
