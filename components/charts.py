@@ -4,7 +4,7 @@ from plotly.subplots import make_subplots
 
 def plot_stock_price(data, symbol):
     """Create an interactive stock price chart using Plotly"""
-    fig = make_subplots(rows=2, cols=1, shared_xaxis=True, 
+    fig = make_subplots(rows=2, cols=1, shared_xaxes=True, 
                        vertical_spacing=0.03, 
                        row_heights=[0.7, 0.3])
 
