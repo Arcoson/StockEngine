@@ -1,4 +1,4 @@
-# 📈 Advanced Stock Analysis Dashboard
+# 📈 StockEngine
 
 A powerful stock analysis platform that empowers investors with advanced data visualization, comprehensive technical analysis, and interactive comparison tools.
 
